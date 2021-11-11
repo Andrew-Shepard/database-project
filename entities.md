@@ -1,13 +1,12 @@
 ### Customers:
  customer ID, name, address (street, city, state, zip code), type (home/business). If business, then business category, company gross annual income, …etc. If home, then marriage status, gender, age, income, …etc.
 
-    I think customer should be broken into 3 entities: Customers, Home, and Business.
-
     Should probably be one customer supertype and the 2 subtypes being home and businees.
 
-    Customers: Customer ID, Name, Address, Type
-    Home: Customer ID, Marriage status, Gender, Age, Income
-    Business: Customer ID, Business Category, Company Annual Income
+    Customers: Customer ID (PK), Name, Address, Type (What subtype)
+
+    Home: Marriage status, Gender, Age, Income
+    Business: Business Category, Company Annual Income
 
 ### Products:
  product ID, name, inventory amount, price, product type w.r.t. some classification.
@@ -16,30 +15,41 @@
 
     This should be the searchable catalog of product for sale as well as the current record of inventory.
 
-    Products: Product ID, Name, Inventory Amount, Price, Product Type
+    Products: Product ID (PK), Name, Inventory Amount, Price, Product Type
+
+### ProductList:
+ Transaction ID, Product ID, Number
+
+    Bridge between products and Transactions
+
+    ProductList: Transaction ID (PK,FK), Product ID (PK,FK), Number (amount in transaction)
 
 ### Transactions: 
 record of product purchased, including order number, date, salesperson name, product information (price, quantity, etc.), customer information.
 
     I think this is what we keep track of purchace history in.
 
-    Transactions: Product ID, Order Number, Date, Employee ID, Customer ID
+    Transactions: Order Number/Transaction ID (PK), Employee ID (FK), Customer ID (FK), Date
 
 ### Employee:
-    Employee ID, Name, Address, E-mail, Job Title
+ Employee ID, Name, Address, Store assigned, E-mail, Job Title, Salary
+    
+    Employee: Employee ID (PK), Name, Address, Store ID (FK), E-mail, Job Title (Determines subtype), Salary
 
 ### Salespersons: 
-name, address, e-mail, job title, store assigned, salary.
+ Employee ID, Name, Address, E-mail, Job Title, Salary
 
-    Salespersons: Employee ID, Store ID, Salary
+    Subtype of employee
+
+    Salespersons: Employee ID (PK), Store ID (FK)
 
 ### Store: 
 store ID, address, manager, number of salespersons, region.
 
-    Store: Store ID, Address, Manager (As an employee ID), Number of Salespersons, Region
+    Store: Store ID (PK), Address, Manager (FK to employee ID), Number of Salespersons, Region ID (FK)
 
 
 ### Region: 
 region ID, region name, region manager.
 
-    Region: Region ID, Region Name, Region Manager (As an Employee ID)
+    Region: Region ID (PK), Region Name, Region Manager (FK to Employee ID)
