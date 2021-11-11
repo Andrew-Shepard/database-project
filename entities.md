@@ -3,19 +3,25 @@
 
     I think customer should be broken into 3 entities: Customers, Home, and Business.
 
+    Should probably be one customer supertype and the 2 subtypes being home and businees.
+
     Customers: Customer ID, Name, Address, Type
     Home: Customer ID, Marriage status, Gender, Age, Income
-    Business: Customer ID, Business Category, Company Annual Income 
+    Business: Customer ID, Business Category, Company Annual Income
 
 ### Products:
  product ID, name, inventory amount, price, product type w.r.t. some classification.
 
     Not sure what w.r.t. some classification is.
+
+    This should be the searchable catalog of product for sale as well as the current record of inventory.
+
     Products: Product ID, Name, Inventory Amount, Price, Product Type
 
 ### Transactions: 
-record of product purchased, including order number, date, salesperson name, product information (price, quantity, etc.)
-, customer information.
+record of product purchased, including order number, date, salesperson name, product information (price, quantity, etc.), customer information.
+
+    I think this is what we keep track of purchace history in.
 
     Transactions: Product ID, Order Number, Date, Employee ID, Customer ID
 
@@ -37,4 +43,3 @@ store ID, address, manager, number of salespersons, region.
 region ID, region name, region manager.
 
     Region: Region ID, Region Name, Region Manager (As an Employee ID)
-
