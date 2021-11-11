@@ -1,40 +1,19 @@
-### Customers: !!!
- customer ID, name, address (street, city, state, zip code), type (home/business). If business, then business category, company gross annual income, …etc. If home, then marriage status, gender, age, income, …etc.
+### Region
 
-    I think customer should be broken into 3 entities: Customers, Home, and Business.
+    One region HAS many stores, many stores BELONG TO one region.
+    One region is MANAGED by one employee, one employee MANAGES one region.
 
-    Customers: Customer ID, Name, Address, Type
-    Home: Customer ID, Marriage status, Gender, Age, Income
-    Business: Customer ID, Business Category, Company Annual Income 
+### Store
 
-### Products:
- product ID, name, inventory amount, price, product type w.r.t. some classification.
+    One store EMPLOYS many employees, many employees WORK at one store.
+    One store is MANAGED by one employee, one employee MANAGES one store.
 
-    Not sure what w.r.t. some classification is.
-    Products: Product ID, Name, Inventory Amount, Price, Product Type
+### Transactions
 
-### Transactions: 
-record of product purchased, including order number, date, salesperson name, product information (price, quantity, etc.)
-, customer information.
+    One employee PERFORMS many transactions, many transactions are PERFORMED by one employee.
+    One customer PARTICIPATES in many transactions, many transactions INVOLVE one customer.
 
-    Transactions: Product ID, Order Number, Date, Employee ID, Customer ID
+## Product List
 
-### Employee:
-    Employee ID, Name, Address, E-mail, Job Title
-
-### Salespersons: 
-name, address, e-mail, job title, store assigned, salary.
-
-    Salespersons: Employee ID, Store ID, Salary
-
-### Store: 
-store ID, address, manager, number of salespersons, region.
-
-    Store: Store ID, Address, Manager (As an employee ID), Number of Salespersons, Region
-
-
-### Region: 
-region ID, region name, region manager.
-
-    Region: Region ID, Region Name, Region Manager (As an Employee ID)
-
+    One product is CONTAINED in many product lists, many product lists CONTAIN one product.
+    One transaction HAS many product lists, many product lists ARE IN one transaction
