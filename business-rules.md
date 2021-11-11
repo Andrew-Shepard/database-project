@@ -1,4 +1,4 @@
-### Customers:
+### Customers: !!!
  customer ID, name, address (street, city, state, zip code), type (home/business). If business, then business category, company gross annual income, …etc. If home, then marriage status, gender, age, income, …etc.
 
     I think customer should be broken into 3 entities: Customers, Home, and Business.
