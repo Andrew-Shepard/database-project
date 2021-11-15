@@ -12,7 +12,10 @@
  product ID, name, inventory amount, price, product type w.r.t. some classification.
 
     Not sure what w.r.t. some classification is.
+    
+    Tires, Batteries, and Engine Parts. (For more ideas: ![image](https://user-images.githubusercontent.com/10381354/141840356-7e67d1bd-1e27-4a10-a1d3-222ed666eee0.png)
 
+    
     This should be the searchable catalog of product for sale as well as the current record of inventory.
 
     Products: Product ID (PK), Name, Inventory Amount, Price, Product Type
