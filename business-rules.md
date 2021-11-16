@@ -13,7 +13,12 @@
     One employee PERFORMS many transactions, many transactions are PERFORMED by one employee.
     One customer PARTICIPATES in many transactions, many transactions INVOLVE one customer.
 
-## Product List
+### Product List
 
     One product is CONTAINED in many product lists, many product lists CONTAIN one product.
     One transaction HAS many product lists, many product lists ARE IN one transaction
+
+### Subtypes
+    Salesperson is a subtype of employee.
+    Home is a subtype of customer.
+    Business is a subtype of customer.
