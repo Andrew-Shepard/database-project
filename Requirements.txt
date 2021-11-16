@@ -1,0 +1,72 @@
+Requirements for region: 
+reg_ID = Y
+emp_ID = N
+reg_Name = Y
+reg_ZipCode = N
+------------------------
+Requirements for Store:
+store_ID = Y
+emp_ID = N
+reg_ID = Y
+store_NumSalPer = N
+store_Sales = N
+store_City = Y
+-------------------------
+Requirements for Employee:
+emp_ID = Y
+store_ID = N
+emp_Email = Y
+emp_JobTitle = Y
+emp_Salary = N
+-----------------------------
+Requirements for Salesperson:
+emp_ID = Y
+sp_NumSales = N
+sp_Comission = N
+sp_YTDSales = N
+------------------------------
+Requirements for Transactions:
+tran_ID = Y
+emp_ID = N
+cus_ID = N
+store_ID = N
+tran_Date = Y
+tran_TotPaid = Y
+------------------------------
+Requirements for Product List:
+tran_ID = Y
+prod_ID = Y
+prodList_Num = N
+Prodlist_NumProd = N
+------------------------------
+Requirements for Products:
+prod_ID = Y
+prod_isUsed = Y
+prod_name = N
+prod_InvAmount = Y
+prod_Price = Y
+prod_Type = N
+prod_ModNum = Y
+Prod_Supplier = N
+------------------------------
+Requirements for Customers:
+cus_ID = Y
+cus_Name = Y
+cus_Address = Y
+cus_Type = Y
+cus_Income = N
+cus_Phone = Y
+cus_NumVec = N
+cus_Insur = Y
+-----------------------------
+Requirements for Business:
+cus_ID = Y
+bus_Category = Y
+bus_NumEmp = N
+-----------------------------
+Requirements for Home:
+cus_ID = Y
+home_MarrStat = Y
+home_Gender = Y
+home_Age = Y
+home_NumRes = Y 
