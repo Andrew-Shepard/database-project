@@ -1,0 +1,69 @@
+--------------------------------
+Contents of Region:
+Region's ID
+Employee's ID
+Address of customer
+Region's Zip-Code
+--------------------------------
+Contents of Store:
+Store's ID
+Employee's ID
+Region's ID
+Store's number of salespersons
+Store's number of sales
+Store's city
+--------------------------------
+Contents of Employee:
+Employee's ID
+Store's ID
+Employee's E-mail address
+Employee's job title
+Employee's salary
+--------------------------------
+Contents of Transactions:
+Transaction's ID
+Employee's ID
+Customer's ID
+Store's ID
+Transaction's date
+Transaction's Total Paid 
+--------------------------------
+Contents of Product List:
+Transaction's ID
+Product's ID
+Product List's number
+Product List's number of products
+--------------------------------
+Contents of Products:
+Product's ID
+Product is used or new?
+Product's name
+Product's amount in inventory
+Product's price
+Product's type
+Product's model number
+Product's supplier
+--------------------------------
+Contents of Customers:
+Customer's ID
+Customer's name
+Customer's address
+Customer type(Business/Home)
+Customer's income
+Customer's phone number
+Customer's number of vehicles
+Customer's insurance 
+Customer's type
+--------------------------------
+Contents of Business:
+Customer's ID
+Business's category
+Business's number of employees
+--------------------------------
+Content of Home:
+Customer's ID
+Home owner's marital status
+Home owner's gender
+Home owner's age
+Home's number of residents
+--------------------------------
