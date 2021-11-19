@@ -10,8 +10,9 @@
 
 ### Transactions
 
-    One employee PERFORMS many transactions, many transactions are PERFORMED by one employee.
+    One salesperson PERFORMS many transactions, many transactions are PERFORMED by one salesperson.
     One customer PARTICIPATES in many transactions, many transactions INVOLVE one customer.
+    Many transactions OCCUR at one store, One store can HAVE many transactions.
 
 ### Product List
 
