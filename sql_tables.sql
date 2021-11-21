@@ -12,7 +12,7 @@ CREATE TABLE auto.store (
     store_id CHAR(5) GENERATED DEFAULT BY IDENTITY UNIQUE,
     employee_id CHAR(5) UNIQUE,
     region_id CHAR(5) UNIQUE,
-    number_of_employees CHAR(5),
+    store_number_of_employees CHAR(5),
     total_sales CHAR(5),
     city CHAR(5),
     PRIMARY KEY(store_id)
@@ -62,4 +62,45 @@ CREATE TABLE auto.productList(
     CONSTRAINT fk_column
         FOREIGN KEY(transaction_id)
         REFERENCES auto.transactions(transaction_id)
+);
+CREATE TABLE auto.products(
+    product_id CHAR(5),
+    used BOOLEAN,
+    product_name VARCHAR(20),
+    amount_in_inventory NUMBER(4,0),
+    price NUMBER(9,2),
+    product_type VARCHAR(20),
+    model_number VARCHAR(20),
+    supplier VARCHAR(20)
+    PRIMARY KEY(product_id,used)
+);
+CREATE TABLE auto.customers(
+    customer_id CHAR(5),
+    customer_name VARCHAR(30),
+    customer_address VARCHAR(30),
+    customer_income NUMBER(9,2),
+    customer_phone CHAR(10),
+    customer_number_of_vehicles CHAR(5),
+    customer_insurance VARCHAR(20),
+    customer_type CHAR(2)
+    PRIMARY KEY(customer_id)
+);
+CREATE TABLE auto.business(
+    customer_id CHAR(5),
+    business_category VARCHAR(20),
+    business_number_of_employees CHAR(5)
+    CONSTRAINT fk_column
+        FOREIGN KEY(customer_id)
+        REFERENCES auto.customer(customer_id)
+);
+CREATE TABLE auto.home(
+    customer_id CHAR(5),
+    home_marriage_status CHAR(1), /* TODO: Why is this not a boolean? */
+    home_gender CHAR(1),
+    home_age NUMBER(3,0),
+    home_number_of_residents NUMBER(3,0),
+    PRIMARY KEY(customer_id)
+    CONSTRAINT fk_column
+        FOREIGN KEY(customer_id)
+        REFERENCES auto.customer(customer_id)
 );
