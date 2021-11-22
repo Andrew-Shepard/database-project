@@ -21,6 +21,8 @@ CREATE TABLE STORE (
 CREATE TABLE EMPLOYEE (
     employee_ID         CHAR(5) NOT NULL,
     store_ID            CHAR(5),
+    employee_first      VARCHAR(20),
+    employee_last       VARCHAR(20),
     employee_email      VARCHAR(20),
     employee_salary     NUMBER(9,2),
     employee_jobTitle   CHAR(2),
