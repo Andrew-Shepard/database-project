@@ -1,7 +1,7 @@
 --CREATE TABLE
 CREATE TABLE REGION (
     region_id        CHAR(5) NOT NULL,
-    employee_id      CHAR(5) NOT NULL,
+    employee_id      CHAR(5),
     region_name      VARCHAR(20),
     region_zipcode   CHAR(5) NOT NULL,
     CONSTRAINT pk_region PRIMARY KEY (region_ID)
@@ -9,8 +9,8 @@ CREATE TABLE REGION (
 
 CREATE TABLE STORE (
     store_ID                    CHAR(5) NOT NULL,
-    employee_ID                 CHAR(5) NOT NULL,
-    region_ID                   CHAR(5) NOT NULL,
+    employee_ID                 CHAR(5),
+    region_ID                   CHAR(5),
     store_numSalesPersons       CHAR(5),
     store_totalSales            CHAR(5),
     store_city                  CHAR(5),
@@ -20,7 +20,7 @@ CREATE TABLE STORE (
 
 CREATE TABLE EMPLOYEE (
     employee_ID         CHAR(5) NOT NULL,
-    store_ID            CHAR(5) NOT NULL,
+    store_ID            CHAR(5),
     employee_email      VARCHAR(20),
     employee_salary     NUMBER(9,2),
     employee_jobTitle   CHAR(2),
@@ -36,7 +36,7 @@ CREATE TABLE TRANSACTION (
     employee_ID            CHAR(5) NOT NULL,
     customer_ID            CHAR(5) NOT NULL,
     store_ID               CHAR(5) NOT NULL,
-    transaction_date       DATE NOT NULL,
+    transaction_date       DATE,
     transaction_total      NUMBER(9,2),
     CONSTRAINT pk_transactions PRIMARY KEY (transaction_ID),
     CONSTRAINT fk_employee_ID FOREIGN KEY (employee_ID) REFERENCES EMPLOYEE (employee_ID) -- Need to change to salesperson later
