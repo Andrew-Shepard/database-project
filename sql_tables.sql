@@ -60,7 +60,7 @@ CREATE TABLE PRODUCTLIST (
     transaction_ID      NUMBER(5) NOT NULL,
     product_ID          NUMBER(5) NOT NULL,
     product_isUsed      NUMBER(1) NOT NULL,
-    product_quanity     NUMBER(4) NOT NULL,
+    product_quantity     NUMBER(4) NOT NULL,
     CONSTRAINT pk_productList PRIMARY KEY (transaction_ID, product_ID, product_isUsed),
     CONSTRAINT fk_transaction_ID FOREIGN KEY (transaction_ID) REFERENCES TRANSACTION (transaction_ID),
     CONSTRAINT fk_product_ID FOREIGN KEY (product_ID, product_isUsed) REFERENCES PRODUCT (product_ID, product_isUsed)

@@ -53,3 +53,10 @@ VALUES (10005, 1, 'Green Paint', 3, 400.00, 'Cosmetic', '22685', 'Lowes');
 INSERT INTO TRANSACTION (transaction_ID, employee_ID, customer_ID, store_ID, transaction_date, transaction_total) VALUES (10000, 10000, 10000, 10000, '01-JAN-2000', 10000);
 INSERT INTO TRANSACTION (transaction_ID, employee_ID, customer_ID, store_ID, transaction_date, transaction_total) VALUES (10001, 10001, 10001, 10001, '02-MAR-2001', 11000);
 INSERT INTO TRANSACTION (transaction_ID, employee_ID, customer_ID, store_ID, transaction_date, transaction_total) VALUES (10002, 10002, 10002, 10002, '03-JUL-2002', 12000);
+
+--Insert ProductList
+insert into PRODUCTLIST (transaction_ID, product_ID, product_isUsed, product_quantity) values (10000, 10000, 0, 4568);
+insert into PRODUCTLIST (transaction_ID, product_ID, product_isUsed, product_quantity) values (10001, 10001, 1, 5785);
+insert into PRODUCTLIST (transaction_ID, product_ID, product_isUsed, product_quantity) values (10001, 10002, 0, 1346);
+insert into PRODUCTLIST (transaction_ID, product_ID, product_isUsed, product_quantity) values (10002, 10003, 0, 4568);
+insert into PRODUCTLIST (transaction_ID, product_ID, product_isUsed, product_quantity) values (10002, 10004, 0, 5647);
