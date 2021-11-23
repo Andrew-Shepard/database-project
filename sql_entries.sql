@@ -9,9 +9,16 @@ INSERT INTO STORE (store_ID, employee_ID, region_ID, store_numSalesPersons, stor
 INSERT INTO STORE (store_ID, employee_ID, region_ID, store_numSalesPersons, store_totalSales, store_city) VALUES (10002, NULL, 10002, 16, 12000, 'Lakeland');
 
 --Insert Employee
-INSERT INTO EMPLOYEE (employee_ID, store_ID, employee_email, employee_salary, employee_jobTitle) VALUES (10000, 10000, 'johns@gmail.com', 60000, 'JA');
-INSERT INTO EMPLOYEE (employee_ID, store_ID, employee_email, employee_salary, employee_jobTitle) VALUES (10001, 10001, 'jamesj@gmail.com', 65000, 'SA');
-INSERT INTO EMPLOYEE (employee_ID, store_ID, employee_email, employee_salary, employee_jobTitle) VALUES (10002, 10002, 'samescott@gmail.com', 70000, 'MA');
+INSERT INTO EMPLOYEE (employee_ID, store_ID, employee_first, employee_last, employee_email, employee_salary, employee_jobTitle) VALUES (10000, 10000, 'John', 'Smith', 'jsmith', 60000, 'J');
+INSERT INTO EMPLOYEE (employee_ID, store_ID, employee_first, employee_last, employee_email, employee_salary, employee_jobTitle) VALUES (10001, 10001, 'James', 'Johnson', 'jjohnson', 65000, 'S');
+INSERT INTO EMPLOYEE (employee_ID, store_ID, employee_first, employee_last, employee_email, employee_salary, employee_jobTitle) VALUES (10002, 10002, 'Sarah', 'Waterson', 'swatterson', 70000, 'M');
+INSERT INTO EMPLOYEE (employee_ID, store_ID, employee_first, employee_last, employee_email, employee_salary, employee_jobTitle) VALUES (10003, 10000, 'Aubrey', 'Jones', 'ajones', 66000, 'S');
+INSERT INTO EMPLOYEE (employee_ID, store_ID, employee_first, employee_last, employee_email, employee_salary, employee_jobTitle) VALUES (10004, 10002, 'Lily', 'West', 'lwest', 47000, 'S');
+
+--Inserting Salespersons
+INSERT INTO SALESPERSON (sp_employee_ID, sp_numSales, sp_commission, sp_YTDsales) VALUES (10001, 58, 55000, 160000);
+INSERT INTO SALESPERSON (sp_employee_ID, sp_numSales, sp_commission, sp_YTDsales) VALUES (10003, 46, 41000, 120000);
+INSERT INTO SALESPERSON (sp_employee_ID, sp_numSales, sp_commission, sp_YTDsales) VALUES (10004, 39, 35000, 100000);
 
 --Setting Reigon Managers
 UPDATE region SET employee_id = 10000 WHERE region_id = 10000;
@@ -23,17 +30,33 @@ UPDATE store SET employee_id = 10000 WHERE store_id = 10000;
 UPDATE store SET employee_id = 10001 WHERE store_id = 10001;
 UPDATE store SET employee_id = 10002 WHERE store_id = 10002;
 
---Insert Customer
+--Insert Home Customers
 INSERT INTO CUSTOMER (customer_ID, customer_name, customer_address, customer_income, customer_phone, customer_vehicles, customer_insurance, customer_type) 
-VALUES (10001, 'John Johnson', '1234 street', 15647.00, 1234567891, 5, 'forms', 1);
+VALUES (10001, 'John Johnson', '1234 street', 15647.00, 1234567891, 5, 'Forms', 'H');
 INSERT INTO CUSTOMER (customer_ID, customer_name, customer_address, customer_income, customer_phone, customer_vehicles, customer_insurance, customer_type) 
-VALUES (10002, 'Johnny Appleseed', 'job street', 458754.00, 4657849461 , 25, 'Helpp', 2);
+VALUES (10002, 'Johnny Appleseed', 'Job street', 458754.00, 4657849461 , 25, 'Helpp', 'H');
 INSERT INTO CUSTOMER (customer_ID, customer_name, customer_address, customer_income, customer_phone, customer_vehicles, customer_insurance, customer_type) 
-VALUES (10003, 'Alexander Tyrell', 'place blvrd', 546791.00, 6794815423, 7, 'Whatever', 3);
+VALUES (10003, 'Alexander Tyrell', 'Place blvrd', 546791.00, 6794815423, 7, 'Whatever', 'H');
+
+--Creating entries in home table
+INSERT INTO HOME (home_customer_ID, home_marriageStat, home_gender, home_age, home_numResidents) 
+VALUES (10001, 'M', 'M', 37, 4);
+INSERT INTO HOME (home_customer_ID, home_marriageStat, home_gender, home_age, home_numResidents) 
+VALUES (10002, 'M', 'M', 55, 5);
+INSERT INTO HOME (home_customer_ID, home_marriageStat, home_gender, home_age, home_numResidents) 
+VALUES (10003, 'U', 'W', 22, 1);
+
+--Insert Business Customers
 INSERT INTO CUSTOMER (customer_ID, customer_name, customer_address, customer_income, customer_phone, customer_vehicles, customer_insurance, customer_type) 
-VALUES (10004, 'Regalia Von Kaiser', 'seed parkway', 67548.00, 4675121346, 6, 'Loops', 2);
+VALUES (10004, 'Goggle', 'Seed parkway', 6754846.00, 4675121346, 6, 'Loops', 'B');
 INSERT INTO CUSTOMER (customer_ID, customer_name, customer_address, customer_income, customer_phone, customer_vehicles, customer_insurance, customer_type) 
-VALUES (10005, 'Otto Jager', 'South Sheep walkway', 99999.00, 4587896650, 8, 'Meep', 1);
+VALUES (10005, 'FloorStore', 'South Sheep walkway', 9999948.00, 4587896650, 8, 'Meep', 'B');
+
+--Creating entries in business table
+INSERT INTO BUSINESS (business_customer_ID, business_category, business_numEmployees)
+VALUES (10004, 'Technology', 10049);
+INSERT INTO BUSINESS (business_customer_ID, business_category, business_numEmployees)
+VALUES (10005, 'Retail', 45985);
 
 --Inserting Products
 INSERT INTO PRODUCT (product_ID, product_isUsed, product_name, product_invAmount, product_price, product_type, product_model, product_supplier)
@@ -50,9 +73,9 @@ INSERT INTO PRODUCT (product_ID, product_isUsed, product_name, product_invAmount
 VALUES (10005, 1, 'Green Paint', 3, 400.00, 'Cosmetic', '22685', 'Lowes');
 
 --Insert Transaction
-INSERT INTO TRANSACTION (transaction_ID, employee_ID, customer_ID, store_ID, transaction_date, transaction_total) VALUES (10000, 10000, 10000, 10000, '01-JAN-2000', 10000);
-INSERT INTO TRANSACTION (transaction_ID, employee_ID, customer_ID, store_ID, transaction_date, transaction_total) VALUES (10001, 10001, 10001, 10001, '02-MAR-2001', 11000);
-INSERT INTO TRANSACTION (transaction_ID, employee_ID, customer_ID, store_ID, transaction_date, transaction_total) VALUES (10002, 10002, 10002, 10002, '03-JUL-2002', 12000);
+INSERT INTO TRANSACTION (transaction_ID, employee_ID, customer_ID, store_ID, transaction_date, transaction_total) VALUES (10000, 10001, 10000, 10000, '01-JAN-2000', 10000);
+INSERT INTO TRANSACTION (transaction_ID, employee_ID, customer_ID, store_ID, transaction_date, transaction_total) VALUES (10001, 10003, 10001, 10001, '02-MAR-2001', 11000);
+INSERT INTO TRANSACTION (transaction_ID, employee_ID, customer_ID, store_ID, transaction_date, transaction_total) VALUES (10002, 10004, 10002, 10002, '03-JUL-2002', 12000);
 
 --Insert ProductList
 insert into PRODUCTLIST (transaction_ID, product_ID, product_isUsed, product_quantity) values (10000, 10000, 0, 4568);
