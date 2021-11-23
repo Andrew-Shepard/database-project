@@ -4,7 +4,7 @@ CREATE TABLE REGION (
     employee_id      NUMBER(5),
     region_name      VARCHAR(20),
     region_zipcode   NUMBER(5) NOT NULL,
-    CONSTRAINT pk_region PRIMARY KEY (region_ID)
+    CONSTRAINT region_pk PRIMARY KEY (region_ID)
 );
 
 CREATE TABLE STORE (
@@ -14,8 +14,8 @@ CREATE TABLE STORE (
     store_numSalesPersons       NUMBER(5),
     store_totalSales            NUMBER(9,2),
     store_city                  VARCHAR(20),
-    CONSTRAINT pk_store PRIMARY KEY (store_ID),
-    CONSTRAINT fk_region_ID FOREIGN KEY (region_ID) REFERENCES REGION (region_ID)
+    CONSTRAINT store_pk PRIMARY KEY (store_ID),
+    CONSTRAINT store_region_id_fk FOREIGN KEY (region_ID) REFERENCES REGION (region_ID)
 );
 
 CREATE TABLE EMPLOYEE (
@@ -26,8 +26,8 @@ CREATE TABLE EMPLOYEE (
     employee_email      VARCHAR(20),
     employee_salary     NUMBER(9,2) CHECK (employee_salary >= 10000),
     employee_jobTitle   CHAR(2),
-    CONSTRAINT pk_employee PRIMARY KEY (employee_ID),
-    CONSTRAINT fk_store_ID FOREIGN KEY (store_ID) REFERENCES STORE (store_ID)
+    CONSTRAINT employee_pk PRIMARY KEY (employee_ID),
+    CONSTRAINT employee_store_id_fk FOREIGN KEY (store_ID) REFERENCES STORE (store_ID)
 );
 
 -- Subclass of employee
@@ -36,16 +36,16 @@ CREATE TABLE SALESPERSON (
     sp_numSales             NUMBER(4),
     sp_commission           NUMBER(9,2),
     sp_YTDsales             NUMBER(9,2),
-    CONSTRAINT pk_salesperson PRIMARY KEY (sp_employee_ID),
-    CONSTRAINT fk_sp_employee_ID FOREIGN KEY (sp_employee_ID) REFERENCES EMPLOYEE (employee_ID)
+    CONSTRAINT salesperson_pk PRIMARY KEY (sp_employee_ID),
+    CONSTRAINT salesperson_employee_id_pk FOREIGN KEY (sp_employee_ID) REFERENCES EMPLOYEE (employee_ID)
 );
 
 -- Add FK relation to region table
-ALTER TABLE region ADD CONSTRAINT fk_employee_ID FOREIGN KEY 
+ALTER TABLE region ADD CONSTRAINT region_employee_id_fk FOREIGN KEY 
 (employee_ID) REFERENCES EMPLOYEE (employee_ID);
 
 -- Add FK relation to store table
-ALTER TABLE store ADD CONSTRAINT fk_employee_ID FOREIGN KEY 
+ALTER TABLE store ADD CONSTRAINT store_employee_id_fk FOREIGN KEY 
 (employee_ID) REFERENCES EMPLOYEE (employee_ID);
 
 CREATE TABLE TRANSACTION (
@@ -55,8 +55,8 @@ CREATE TABLE TRANSACTION (
     store_ID               NUMBER(5) NOT NULL,
     transaction_date       DATE,
     transaction_total      NUMBER(9,2),
-    CONSTRAINT pk_transactions PRIMARY KEY (transaction_ID),
-    CONSTRAINT fk_employee_ID FOREIGN KEY (employee_ID) REFERENCES SALESPERSON (sp_employee_ID)
+    CONSTRAINT transaction_pk PRIMARY KEY (transaction_ID),
+    CONSTRAINT transaction_employee_id_fk FOREIGN KEY (employee_ID) REFERENCES SALESPERSON (sp_employee_ID)
 );
 
 CREATE TABLE PRODUCT (
@@ -68,17 +68,17 @@ CREATE TABLE PRODUCT (
     product_type            VARCHAR(20) NOT NULL,
     product_model           VARCHAR(20) NOT NULL,
     product_supplier        VARCHAR(20),
-    CONSTRAINT pk_product PRIMARY KEY (product_ID, product_isUsed)
+    CONSTRAINT product_pk PRIMARY KEY (product_ID, product_isUsed)
 );
 
 CREATE TABLE PRODUCTLIST (
     transaction_ID      NUMBER(5) NOT NULL,
     product_ID          NUMBER(5) NOT NULL,
     product_isUsed      NUMBER(1) NOT NULL,
-    product_quantity     NUMBER(4) NOT NULL CHECK (employee_ID >= 1 AND employee_ID <= 9999),
-    CONSTRAINT pk_productList PRIMARY KEY (transaction_ID, product_ID, product_isUsed),
-    CONSTRAINT fk_transaction_ID FOREIGN KEY (transaction_ID) REFERENCES TRANSACTION (transaction_ID),
-    CONSTRAINT fk_product_ID FOREIGN KEY (product_ID, product_isUsed) REFERENCES PRODUCT (product_ID, product_isUsed)
+    product_quantity     NUMBER(4) NOT NULL CHECK (product_quantity >= 1 AND product_quantity <= 9999),
+    CONSTRAINT productlist_pk PRIMARY KEY (transaction_ID, product_ID, product_isUsed),
+    CONSTRAINT productlist_transaction_id_fk FOREIGN KEY (transaction_ID) REFERENCES TRANSACTION (transaction_ID),
+    CONSTRAINT productlist_product_id_fk FOREIGN KEY (product_ID, product_isUsed) REFERENCES PRODUCT (product_ID, product_isUsed)
 );
 
 CREATE TABLE CUSTOMER (
@@ -90,7 +90,7 @@ CREATE TABLE CUSTOMER (
     customer_vehicles               NUMBER(5),
     customer_insurance              VARCHAR(20) NOT NULL,
     customer_type                   CHAR(2) NOT NULL,
-    CONSTRAINT pk_customer PRIMARY KEY (customer_ID)
+    CONSTRAINT customer_pk PRIMARY KEY (customer_ID)
 );
 
 -- Subclasses of customer
@@ -98,8 +98,8 @@ CREATE TABLE BUSINESS (
     business_customer_ID    NUMBER(5) NOT NULL CHECK (business_customer_ID >= 10000 AND business_customer_ID <= 99999),
     business_category       VARCHAR(20) NOT NULL,
     business_numEmployees   NUMBER(5) CHECK (business_numEmployees >= 1 AND business_numEmployees <= 99999),
-    CONSTRAINT pk_business PRIMARY KEY (business_customer_ID),
-    CONSTRAINT fk_business_customer_ID FOREIGN KEY (business_customer_ID) REFERENCES CUSTOMER (customer_ID)
+    CONSTRAINT business_pk PRIMARY KEY (business_customer_ID),
+    CONSTRAINT business_customer_id_fk FOREIGN KEY (business_customer_ID) REFERENCES CUSTOMER (customer_ID)
 );
 
 CREATE TABLE HOME (
@@ -108,6 +108,6 @@ CREATE TABLE HOME (
     home_gender         CHAR(1),
     home_age            NUMBER(3),
     home_numResidents   NUMBER(3),
-    CONSTRAINT pk_home PRIMARY KEY (home_customer_ID),
-    CONSTRAINT fk_home_customer_ID FOREIGN KEY (home_customer_ID) REFERENCES CUSTOMER (customer_ID)
+    CONSTRAINT home_pk PRIMARY KEY (home_customer_ID),
+    CONSTRAINT home_customer_id_fk FOREIGN KEY (home_customer_ID) REFERENCES CUSTOMER (customer_ID)
 );
