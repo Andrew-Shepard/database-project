@@ -41,7 +41,11 @@ CREATE TABLE SALESPERSON (
 );
 
 -- Add FK relation to region table
-alter table REGION add CONSTRAINT fk_region FOREIGN KEY 
+ALTER TABLE region ADD CONSTRAINT fk_employee_ID FOREIGN KEY 
+(employee_ID) REFERENCES EMPLOYEE (employee_ID);
+
+-- Add FK relation to store table
+ALTER TABLE store ADD CONSTRAINT fk_employee_ID FOREIGN KEY 
 (employee_ID) REFERENCES EMPLOYEE (employee_ID);
 
 CREATE TABLE TRANSACTION (
