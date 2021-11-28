@@ -78,8 +78,8 @@ INSERT INTO TRANSACTION (transaction_ID, employee_ID, customer_ID, store_ID, tra
 INSERT INTO TRANSACTION (transaction_ID, employee_ID, customer_ID, store_ID, transaction_date, transaction_total) VALUES (10002, 10004, 10002, 10002, '03-JUL-2002', 12000);
 
 --Insert ProductList
-insert into PRODUCTLIST (transaction_ID, product_ID, product_isUsed, product_quantity) values (10000, 10000, 0, 4568);
-insert into PRODUCTLIST (transaction_ID, product_ID, product_isUsed, product_quantity) values (10001, 10001, 1, 5785);
-insert into PRODUCTLIST (transaction_ID, product_ID, product_isUsed, product_quantity) values (10001, 10002, 0, 1346);
-insert into PRODUCTLIST (transaction_ID, product_ID, product_isUsed, product_quantity) values (10002, 10003, 0, 4568);
-insert into PRODUCTLIST (transaction_ID, product_ID, product_isUsed, product_quantity) values (10002, 10004, 0, 5647);
+insert into PRODUCTLIST (transaction_ID, product_ID, product_isUsed, product_quantity) values (10000, 10000, 0, 68);
+insert into PRODUCTLIST (transaction_ID, product_ID, product_isUsed, product_quantity) values (10001, 10001, 1, 85);
+insert into PRODUCTLIST (transaction_ID, product_ID, product_isUsed, product_quantity) values (10001, 10002, 0, 35);
+insert into PRODUCTLIST (transaction_ID, product_ID, product_isUsed, product_quantity) values (10002, 10003, 0, 25);
+insert into PRODUCTLIST (transaction_ID, product_ID, product_isUsed, product_quantity) values (10002, 10004, 0, 45);

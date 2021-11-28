@@ -1,4 +1,9 @@
 -- Customer Browsing
+--Selecting the id, name, amount, and price of cosmetic products
+SELECT PRODUCT_ID, PRODUCT_ISUSED, PRODUCT_NAME, PRODUCT_INVAMOUNT, PRODUCT_PRICE FROM (SELECT * FROM PRODUCT WHERE PRODUCT_TYPE = 'Cosmetic');
+--Searching for part of a product's name
+SELECT PRODUCT_ID, PRODUCT_ISUSED, PRODUCT_NAME, PRODUCT_INVAMOUNT, PRODUCT_PRICE FROM (SELECT * FROM PRODUCT WHERE PRODUCT_NAME LIKE '%ea%');
+
 select * from Product; --select all from product
 select product_name, product_invamount from Product; --display product name and product inventory amount
 select * from Product where product_supplier = 'Toyota'; --select all products by supplier Toyota
@@ -33,8 +38,24 @@ select employee_id from Transaction where transaction_date = '02-MAR-01'; --sele
 select employee_first, employee_last from employee where employee_id = '10001'; --selects the employee's first and last name from table employee of employee who assisted on 02-MAR-01
 select customer_name from Customer where customer_id = '10001'; --selects customer name where the customer ID = 10001
 
---TODO: Update Transactions
+--Update Transactions:
+--Adds new transaction to appropriate table
+INSERT INTO TRANSACTION (transaction_ID, employee_ID, customer_ID, store_ID, transaction_date, transaction_total) VALUES (10003, 10001, 10003, 10003, '02-JAN-2000', 19000);
+--Changes transaction total for the above transaction
+UPDATE Transaction SET transaction_total = '13000' WHERE transaction_id = '10003';
 
---TODO: Demonstrate Error Checking
+--Error Checking:
+--Shows current product table
+SELECT * FROM PRODUCT;
+--Showing invAmount can't be negative
+UPDATE PRODUCT SET product_invAmount = -5;
+--Showing that you can't add a product with a used field that's not 0 or 1;
+INSERT INTO PRODUCT (product_ID, product_isUsed, product_name, product_invAmount, product_price, product_type, product_model, product_supplier)
+VALUES (10000, 5, 'Transmission', 10, 500.00, 'Car Part', '17796', 'Toyota');
+--Showing you can't add a product with a 1 digit key
+INSERT INTO PRODUCT (product_ID, product_isUsed, product_name, product_invAmount, product_price, product_type, product_model, product_supplier)
+VALUES (1, 5, 'Transmission', 10, 500.00, 'Car Part', '17796', 'Toyota');
 
---TODO: Data Aggregation
+--Data Aggregation
+--Shows the total amount made from different product categories in descending order
+SELECT SUM(pl.product_quantity * pd.product_price) AS YTD_Sales, product_type FROM PRODUCTLIST pl JOIN PRODUCT pd ON pl.PRODUCT_ID = pd.PRODUCT_ID GROUP BY product_type ORDER BY YTD_SALES DESC;

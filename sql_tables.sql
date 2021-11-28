@@ -63,7 +63,7 @@ CREATE TABLE PRODUCT (
     product_ID              NUMBER(5) NOT NULL CHECK (product_ID >= 10000 AND product_ID <= 99999),
     product_isUsed          NUMBER(1) NOT NULL CHECK (product_isUsed = 0 OR product_isUsed = 1),
     product_name            VARCHAR(20),
-    product_invAmount       NUMBER(4) NOT NULL,
+    product_invAmount       NUMBER(4) NOT NULL CHECK (product_invAmount >= 0 AND product_invAmount <= 9999),
     product_price           NUMBER(9,2),
     product_type            VARCHAR(20) NOT NULL,
     product_model           VARCHAR(20) NOT NULL,
